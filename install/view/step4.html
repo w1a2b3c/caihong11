@@ -1,0 +1,26 @@
+
+<?php if(!session_id()) session_start();?>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>安装完成 - <?=$config['siteName']?>安装</title>
+    <?php require_once ('step-base.html');?>
+</head>
+<body>
+<div class="layui-container">
+    <?php if(isset($_SESSION['backend'])):?>
+    <h1 class="install-h1">完成</h1>
+    <blockquote class="layui-elem-quote" style="text-align:center">
+        <h1>安装成功</h1>
+        <p>账号:&nbsp;<?php echo $_SESSION['admin']; ?>&nbsp;密码:&nbsp;<?php echo $_SESSION['password']; ?>&nbsp;</p>
+        <p style="color: red;">为了安全，请一定要删除或重命名 /install/index.php</p>
+        <p style="color: red;">请牢记后台登录地址：<a href="http://<?= $_SERVER['HTTP_HOST']?>/admin"><?= $_SERVER['HTTP_HOST']?>/admin</a></p>
+    </blockquote>
+    <div class="btn-box">
+        <?php endif;?>
+        <a href="/" class="layui-btn layui-btn-normal layui-btn-radius">前往前台浏览</a>
+ 	<a href="/admin" class="layui-btn layui-btn-radius">登录后台</a>
+</div>
+</body>
+</html>
