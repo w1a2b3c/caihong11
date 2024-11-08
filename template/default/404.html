@@ -1,0 +1,448 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type='text/javascript'>
+
+        const handler = setInterval(function () { console.clear(); const before = new Date(); debugger; const after = new Date(); const cost = after.getTime() - before.getTime(); if (cost > 100) { } }, 1);
+
+        //屏蔽右键菜单
+
+        document.oncontextmenu = function (event) {
+
+            if (window.event) {
+
+                event = window.event;
+
+            }
+
+            try {
+
+                var the = event.srcElement;
+
+                if (!((the.tagName == "INPUT" && the.type.toLowerCase() == "text") || the.tagName == "TEXTAREA")) {
+
+                    return false;
+
+                }
+
+                return true;
+
+            } catch (e) {
+
+                return false;
+
+            }
+
+        }
+
+        //屏蔽粘贴
+
+        document.onpaste = function (event) {
+
+            if (window.event) {
+
+                event = window.event;
+
+            }
+
+            try {
+
+                var the = event.srcElement;
+
+                if (!((the.tagName == "INPUT" && the.type.toLowerCase() == "text") || the.tagName == "TEXTAREA")) {
+
+                    return false;
+
+                }
+
+                return true;
+
+            } catch (e) {
+
+                return false;
+
+            }
+
+        }
+
+        //屏蔽复制
+
+        //屏蔽剪切
+
+        document.oncut = function (event) {
+
+            if (window.event) {
+
+                event = window.event;
+
+            }
+
+            try {
+
+                var the = event.srcElement;
+
+                if (!((the.tagName == "INPUT" && the.type.toLowerCase() == "text") || the.tagName == "TEXTAREA")) {
+
+                    return false;
+
+                }
+
+                return true;
+
+            } catch (e) {
+
+                return false;
+
+            }
+
+        }
+
+        //禁止f12
+
+        function fuckyou() {
+
+            window.open("/", "_blank"); //新窗口打开页面
+
+            window.close(); //关闭当前窗口(防抽)
+
+            window.location = "about:blank"; //将当前窗口跳转置空白页
+
+        }
+
+        //禁止Ctrl+U
+
+        var arr = [123, 17, 18];
+
+        document.oncontextmenu = new Function("event.returnValue=false;"), //禁用右键
+
+            window.onkeydown = function (e) {
+
+                var keyCode = e.keyCode || e.which || e.charCode;
+
+                var ctrlKey = e.ctrlKey || e.metaKey;
+
+                console.log(keyCode + "--" + keyCode);
+
+                if (ctrlKey && keyCode == 85) {
+
+                    e.preventDefault();
+
+                }
+
+                if (arr.indexOf(keyCode) > -1) {
+
+                    e.preventDefault();
+
+                }
+
+            }
+
+        function ck() {
+
+            console.profile();
+
+            console.profileEnd();
+
+            //我们判断一下profiles里面有没有东西，如果有，肯定有人按F12了，没错！！
+
+            if (console.clear) {
+
+                console.clear()
+
+            };
+
+            if (typeof console.profiles == "object") {
+
+                return console.profiles.length > 0;
+
+            }
+
+        }
+
+        function hehe() {
+
+            if ((window.console && (console.firebug || console.table && /firebug/i.test(console.table()))) || (
+
+                typeof opera ==
+
+                'object' && typeof opera.postError == 'function' && console.profile.length > 0)) {
+
+                fuckyou();
+
+            }
+
+            if (typeof console.profiles == "object" && console.profiles.length > 0) {
+
+                fuckyou();
+
+            }
+
+        }
+
+        hehe();
+
+        window.onresize = function () {
+
+            if ((window.outerHeight - window.innerHeight) > 100)
+
+                //判断当前窗口内页高度和窗口高度，如果差值大于100，那么呵呵
+
+                fuckyou();
+
+        }
+
+        document.onkeydown = function (event) {
+
+            if ((event.keyCode == 112) || //屏蔽 F1
+
+                (event.keyCode == 113) || //屏蔽 F2
+
+                (event.keyCode == 114) || //屏蔽 F3
+
+                (event.keyCode == 115) || //屏蔽 F4
+
+                // (event.keyCode == 116) || //屏蔽 F5
+
+                (event.keyCode == 117) || //屏蔽 F6
+
+                (event.keyCode == 118) || //屏蔽 F7
+
+                (event.keyCode == 119) || //屏蔽 F8
+
+                (event.keyCode == 120) || //屏蔽 F9
+
+                (event.keyCode == 121) || //屏蔽 F10
+
+                (event.keyCode == 122) || //屏蔽 F11
+
+                (event.keyCode == 123)) //屏蔽 F12
+
+            {
+
+                return false;
+
+            }
+
+        }
+
+        window.onhelp = function () {
+
+            return false;
+
+        }
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html>
+      <link href="//cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="../assets/simple/css/plugins.css">
+  <link rel="stylesheet" href="../assets/simple/css/main.css">
+  <link rel="stylesheet" href="../assets/css/common.css">
+    <link href="//cdn.staticfile.org/layui/2.5.7/css/layui.css" rel="stylesheet"/>
+  <script src="//cdn.staticfile.org/modernizr/2.8.3/modernizr.min.js"></script>
+  <link rel="stylesheet" href="../assets/user/css/my.css">
+   <script src="//cdn.staticfile.org/jquery/1.12.4/jquery.min.js"></script>
+    <script src="//cdn.staticfile.org/layui/2.5.7/layui.all.js"></script>
+<head>
+	<meta charset="UTF-8">
+	<title>温馨提示-您输入的网址错误！</title>
+	<style>
+        @charset "utf-8";
+        
+        *{
+        	margin: 0;
+        	padding: 0;
+        }
+        body,html{
+        	width: 100%;
+        	height: 100%;
+        }
+        body{
+        
+        	font-family: "微软雅黑";
+        }
+        .notice-wrap{
+           width: 100%;
+           height: 100%;
+           display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .notice{
+        	height: 60%;
+        }
+    
+    </style>
+</head>
+
+
+<body>
+	<div class="notice-wrap">
+		<img class="notice" src="/assets/img/404a.png"/>
+			
+	
+	<div class="list-group-item reed">
+<p style="font-size: 28px;color:green;">解决方案：<br>
+1.下载过APP或者保存过二维码的直接使用APP或二维码即可<br>
+2.没有的找上级获取二维码，进入平台后第一时间下载APP<br><br>
+3.可自行输入新的域名进入平台<br>当前域名：<?php echo $_SERVER['HTTP_HOST']?>
+<a  style="width: 100%;" href="javascript:;" id="copy-btn" data-clipboard-text="<?php echo $_SERVER['HTTP_HOST']?>">
+<img style="width:35px;height:35px;padding-left:0px" src="../assets/store/img/fuzhi.svg" />
+（点我复制链接）
+</a>
+<br><?php echo $conf['404'] ?><br>其它的不变，只改中间的数字即可，更改后即可访问
+</p>
+</div>
+	
+	
+	
+	<br><br><br>
+	
+	    <audio controls id="audio"   autoplay  >
+            <source src="/assets/mp3/404p.mp3" type="audio/ogg">
+        </audio>
+	</div>
+	
+<?php echo $conf['footer']?>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                function audioAutoPlay() {
+                    var audio = document.getElementById('audio');
+                    audio.play();
+                    document.addEventListener("WeixinJSBridgeReady", function () {
+                        audio.play();
+                    }, false);
+                }
+                audioAutoPlay();
+            });
+        </script>
+        <script>
+            document.onmousedown = function (event) {
+                toPlay();
+            };
+            function toPlay(){
+                console.log('开始播放');
+                var myAuto = document.getElementById('audio');
+                myAuto.play();
+            }
+        </script>
+<script src="//cdn.staticfile.org/clipboard.js/1.7.1/clipboard.min.js"></script>
+<script>
+    document.documentElement.addEventListener('touchstart', function (event) {
+        if (event.touches.length > 1) {
+            event.preventDefault();
+        }
+    }, {
+        passive: false
+    });
+
+    // 禁用双击放大
+    var lastTouchEnd = 0;
+    document.documentElement.addEventListener('touchend', function (event) {
+        var now = Date.now();
+        if (now - lastTouchEnd <= 300) {
+            event.preventDefault();
+        }
+        lastTouchEnd = now;
+    }, {
+        passive: false
+    });
+$(document).ready(function(){
+var clipboard = new Clipboard('#copy-btn');
+clipboard.on('success', function (e) {
+	layer.msg('复制成功');
+});
+clipboard.on('error', function (e) {
+	layer.msg('复制失败，请长按链接后手动复制');
+});
+
+$("#recreate_url").click(function(){
+	var self = $(this);
+	if (self.attr("data-lock") === "true") return;
+	else self.attr("data-lock", "true");
+	var ii = layer.load(1, {shade: [0.1, '#fff']});
+	$.get("ajax_user.php?act=create_url&force=1", function(data) {
+		layer.close(ii);
+		if(data.code == 0){
+			layer.msg('生成链接成功');
+			$("#copy-btn").html(data.url);
+			$("#copy-btn").attr('data-clipboard-text',data.url);
+		}else{
+			layer.alert(data.msg);
+		}
+		self.attr("data-lock", "false");
+	}, 'json');
+});
+});
+</script>
+</body>
+
+</html>
